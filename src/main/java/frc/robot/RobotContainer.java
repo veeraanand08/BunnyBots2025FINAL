@@ -35,8 +35,8 @@ public class RobotContainer {
     public RobotContainer() {
         swerveSubsystem.setDefaultCommand(new SwerveJoystickCmd(
                 swerveSubsystem,
-                () -> -controller.getLeftY(),
-                () -> controller.getLeftX(), 
+                () -> controller.getLeftY(),
+                () -> -controller.getLeftX(), 
                 controller::getRightX,             
                 true
         ));
@@ -55,7 +55,16 @@ public class RobotContainer {
             new SequentialCommandGroup(
                 new RaiseBucketAutoCmd(bucketSubsystem),
                 new WaitCommand(3),
-                new AutoDriveCmd(swerveSubsystem, 3, -1, 0, 0),
+                new AutoDriveCmd(swerveSubsystem, 2.5, -1, 0, 0),
+                new LowerBucketAutoCmd(bucketSubsystem)
+            )
+        );
+
+        autoChooser.addOption("Outer2",
+            new SequentialCommandGroup(
+                new RaiseBucketAutoCmd(bucketSubsystem),
+                new WaitCommand(3),
+                //new AutoDriveCmd(swerveSubsystem, 3, -1, 0, 0),
                 new LowerBucketAutoCmd(bucketSubsystem)
             )
         );
@@ -64,8 +73,8 @@ public class RobotContainer {
             new SequentialCommandGroup(
                 new RaiseBucketAutoCmd(bucketSubsystem),
                 new WaitCommand(3),
-                new AutoDriveCmd(swerveSubsystem, 3, 0, 1, 0),
-                new AutoDriveCmd(swerveSubsystem, 3, -1, 0, 0),
+                new AutoDriveCmd(swerveSubsystem, 5, 0, -1, 0),
+                new AutoDriveCmd(swerveSubsystem, 4, -2, 0, 0),
                 new LowerBucketAutoCmd(bucketSubsystem)
             )
         );
@@ -74,8 +83,8 @@ public class RobotContainer {
             new SequentialCommandGroup(
                 new RaiseBucketAutoCmd(bucketSubsystem),
                 new WaitCommand(3),
-                new AutoDriveCmd(swerveSubsystem, 3, 0, -1, 0),
-                new AutoDriveCmd(swerveSubsystem, 3, -1, 0, 0),
+                new AutoDriveCmd(swerveSubsystem, 5, 0, 1, 0),
+                new AutoDriveCmd(swerveSubsystem, 4, -2, 0, 0),
                 new LowerBucketAutoCmd(bucketSubsystem)
             )
         );

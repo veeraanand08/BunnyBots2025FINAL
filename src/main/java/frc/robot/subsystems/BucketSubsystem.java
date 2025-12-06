@@ -39,8 +39,6 @@ public class BucketSubsystem extends SubsystemBase {
         rightConfig.inverted(DriveConstants.kRightBucketMotorReversed);
         leftConfig.encoder.positionConversionFactor(ModuleConstants.kBucketEncoderRot2Rad);
         rightConfig.encoder.positionConversionFactor(ModuleConstants.kBucketEncoderRot2Rad);
-        leftConfig.idleMode(IdleMode.kBrake);
-        rightConfig.idleMode(IdleMode.kBrake);
 
         leftMotor.configure(leftConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         rightMotor.configure(rightConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);

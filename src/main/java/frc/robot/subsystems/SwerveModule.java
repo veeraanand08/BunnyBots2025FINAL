@@ -104,12 +104,7 @@ public class SwerveModule {
             return;
         }
         state.optimize(getState().angle);
-        double driveValue = state.speedMetersPerSecond / DriveConstants.kPhysicalMaxSpeedMetersPerSecond;
-        if (driveValue > 1) {
-            driveValue = 1.0;
-        } else if (driveValue < -1.0) {
-            driveValue = -1.0;
-        }
+        double driveValue = state.speedMetersPerSecond / DriveConstants.kPhysicalMaxSpeedMetersPerSecond;    
         driveMotor.set(driveValue);
         turningMotor.set(turningPidController.calculate(getTurningPosition(), state.angle.getRadians()));
     }
